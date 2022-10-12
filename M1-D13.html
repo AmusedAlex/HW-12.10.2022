@@ -91,6 +91,7 @@
       class="task-list-item"
       type="button"
       value="Change task background"
+      onclick="changeTaskBackgroundColor()"
     />
 
     <hr />
@@ -147,7 +148,14 @@
                Create a function "changeTaskBackgroundColor" and attach it to the "Change task background" button via JavaScript (not via html attribute)
                Take the color from the color picker ad apply it as background to every list item
       */
-
+      const changeTaskBackgroundColor = function () {
+        let colorChangeBG = document.getElementById("colorPicker").value;
+        let ul = document.querySelector("ul");
+        // for (let i = 0; i < ul.length; i++) {
+        ul.style.backgroundColor = colorChangeBG;
+        // }
+        // console.log(colorChangeBG);
+      };
       /* ### EXTRA ### */
 
       /* EXERCISE 10:
