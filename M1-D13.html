@@ -89,6 +89,7 @@
     <input type="color" placeholder="Color" id="colorPicker" />
     <input
       class="task-list-item"
+      id="changeBGButton"
       type="button"
       value="Change task background"
     />
@@ -150,9 +151,11 @@
                 Take the color from the color picker ad apply it as background to every list item
        */
       const addingEventListenerToBG = function () {
-        document.getElementById("colorPicker").addEventListener("click", () => {
-          changeTaskBackgroundColor();
-        });
+        document
+          .getElementById("changeBGButton")
+          .addEventListener("click", () => {
+            changeTaskBackgroundColor();
+          });
       };
 
       addingEventListenerToBG();
