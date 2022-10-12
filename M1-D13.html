@@ -28,13 +28,18 @@
        Create a CSS class for the task list item with a border, a bold text and a bigger font size
        Style every button of the page to be bigger
     */
-      .task-list {
-        background-color: bisque;
+      #myTaskList {
+        background-color: lightblue;
       }
       .task-list-item {
         border: 1px solid;
         font-size: 1.1em;
         font-weight: bold;
+      }
+
+      input[type="button"] {
+        height: 2em;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -51,6 +56,7 @@
     <input type="text" id="newTask" />
     <input
       class="task-list-item"
+      id="newTask-Button"
       type="button"
       value="Add new Task"
       onclick="addNewTask()"
@@ -59,12 +65,22 @@
     <!-- EXERCISE 3
         Create a button "Remove Last Task" to trigger the function "removeLast"
         -->
-    <input class="task-list-item" type="button" value="Remove Last Task" />
+    <input
+      class="task-list-item"
+      type="button"
+      value="Remove Last Task"
+      onclick="removeLast()"
+    />
 
     <!-- EXERCISE 4
         Create a button "Remove First Task" to trigger the function "removeFirst"
         -->
-    <input class="task-list-item" type="button" value="Remove First Task" />
+    <input
+      class="task-list-item"
+      type="button"
+      value="Remove First Task"
+      onclick="removeFirst()"
+    />
 
     <ul id="myTaskList"></ul>
 
@@ -88,43 +104,63 @@
 
     <script>
       /* EXERCISE 5:
-              Add a new task to the list.
-              Suggestion:
-              - Use document.getElementById to get the UL item and the input text
-              - Use the document.createElement to create the new List Item
-              - Append the LI child to the UL
-          */
+                Add a new task to the list.
+                Suggestion:
+                - Use document.getElementById to get the UL item and the input text
+                - Use the document.createElement to create the new List Item
+                - Append the LI child to the UL
+            */
+      const addNewTask = function () {
+        let ul = document.getElementById("myTaskList");
+        let li = document.createElement("li");
+        let input = document.getElementById("newTask").value;
 
+        li.appendChild(document.createTextNode(input));
+        ul.appendChild(li);
+      };
       /* EXERCISE 6:
-              Create a function "removeLast" which removes the last item from the task list
-          */
-
+                Create a function "removeLast" which removes the last item from the task list
+            */
+      const removeLast = function () {
+        let ul = document.getElementById("myTaskList");
+        ul.removeChild(ul.lastChild);
+      };
       /* EXERCISE 7:
-              Create a function "removeFirst" which removes the first item from the task list
-          */
-
+                Create a function "removeFirst" which removes the first item from the task list
+            */
+      const removeFirst = function () {
+        let ul = document.getElementById("myTaskList");
+        ul.removeChild(ul.firstChild);
+      };
       /* EXERCISE 8:
-             Create a function "getTasksAsArray" which returns, and prints to the console an array containing the tasks as strings
-          */
-
+               Create a function "getTasksAsArray" which returns, and prints to the console an array containing the tasks as strings
+            */
+      const getTasksAsArray = function () {
+        let liArray = document.querySelectorAll("li");
+        let taskAsArray = [];
+        for (let i = 0; i < liArray.length; i++) {
+          taskAsArray.push(liArray[i].innerText);
+        }
+        console.log(taskAsArray);
+      };
       /* EXERCISE 9:
-             Create a function "changeTaskBackgroundColor" and attach it to the "Change task background" button via JavaScript (not via html attribute)
-             Take the color from the color picker ad apply it as background to every list item
-    */
+               Create a function "changeTaskBackgroundColor" and attach it to the "Change task background" button via JavaScript (not via html attribute)
+               Take the color from the color picker ad apply it as background to every list item
+      */
 
       /* ### EXTRA ### */
 
       /* EXERCISE 10:
-              Attach an eventListener to each new task you create. When the task receives the click it should be removed (only the clicked task should disappear)
-    */
+                Attach an eventListener to each new task you create. When the task receives the click it should be removed (only the clicked task should disappear)
+      */
 
       /* EXERCISE 11:
-             Create a function "bubbleSort()" which sorts the task list alphabetically using the bubble sort algorithm
-    */
+               Create a function "bubbleSort()" which sorts the task list alphabetically using the bubble sort algorithm
+      */
 
       /* #### Suggestion:
-     - Break the code into many function for semplicity 
-     - Reuse the functions previously created */
+       - Break the code into many function for semplicity
+       - Reuse the functions previously created */
     </script>
   </body>
 </html>
